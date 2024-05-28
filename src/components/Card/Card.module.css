@@ -1,0 +1,47 @@
+.card {
+  border-radius: 20px;
+  width: 30%;
+  height: 30rem;
+  margin-bottom: 2rem;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  min-width: 250px;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 15px -1px rgba(34, 92, 137, 0.29);
+  -moz-box-shadow: 0px 0px 15px -1px rgba(34, 92, 137, 0.29);
+  box-shadow: 0px 0px 15px -1px rgba(34, 92, 137, 0.29);
+}
+.productLogo {
+  width: 65%;
+  height: 45%;
+  margin-top: 2rem;
+  border-radius: 20px;
+}
+.selectQuant {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+}
+.buttonSection {
+  display: flex;
+  flex-direction: row;
+}
+.cardFooter {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  align-items: center;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  box-sizing: border-box;
+}

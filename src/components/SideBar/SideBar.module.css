@@ -1,0 +1,25 @@
+.sideBar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  width: 38vw;
+  padding-left: 1rem;
+  height: 70vh;
+  background-color: white;
+  margin-left: 1rem;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+div.sideBar p {
+  text-indent: 20px;
+}
+div.sideBar h1 {
+  color: #0a7272;
+  text-indent: 20px;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+h1 span {
+  color: #f7a110;
+}

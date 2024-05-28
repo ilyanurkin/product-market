@@ -1,0 +1,33 @@
+.CatalogNavBar {
+  width: 30%;
+  max-width: max-content;
+  height: 72vh;
+  padding: 1rem;
+  margin-top: 1.2rem;
+  margin-left: auto;
+  border-radius: 2rem;
+  -webkit-box-shadow: 0px 0px 15px -1px rgba(34, 92, 137, 0.29);
+  -moz-box-shadow: 0px 0px 15px -1px rgba(34, 92, 137, 0.29);
+  box-shadow: 0px 0px 15px -1px rgba(34, 92, 137, 0.29);
+}
+.CatalogNavBar input {
+  margin-bottom: 2rem;
+  width: 80%;
+  height: 3rem;
+  outline: #0a7272;
+  padding-left: 1rem;
+  color: #0a7272;
+  border: 1px solid #0a7272;
+  -webkit-box-shadow: 0px 0px 15px -1px rgba(34, 92, 137, 0.29);
+  -moz-box-shadow: 0px 0px 15px -1px rgba(34, 92, 137, 0.29);
+  box-shadow: 0px 0px 15px -1px rgba(34, 92, 137, 0.29);
+  background-color: white;
+  border-radius: 3rem;
+}
+.CatalogNavBar input::placeholder {
+  font-size: 0.6rem;
+  color: #0a7272;
+  font-family: "Ubuntu", sans-serif;
+  letter-spacing: 2px;
+  padding-left: 10px;
+}

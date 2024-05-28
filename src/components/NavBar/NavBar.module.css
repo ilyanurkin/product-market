@@ -1,0 +1,26 @@
+button {
+  padding: 1rem;
+  font-size: 0.7rem;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 600;
+  width: 17%;
+  margin: 0.1rem;
+  border: none;
+  background-color: white;
+  border: 2px solid #0a7272;
+  border-radius: 10px;
+}
+button:hover {
+  color: #0a7272;
+  cursor: pointer;
+}
+.section {
+  margin-left: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 1rem;
+  width: 50%;
+  margin-bottom: auto;
+  height: 6rem;
+}
