@@ -1,15 +1,16 @@
 import classes from "../NavBar/NavBar.module.css";
 import Button from "../Button/Button";
-export default function NavBar({ isActive, onChange, cartSizeCount }) {
-  const navBarMenu = ["О Компании", "Каталог", "Избранное", "Корзина", "Акции"];
+
+import { navBarMenu } from "../../localData/navBarElements";
+export default function NavBar({ activeContent, onChangeContent }) {
   return (
     <section className={classes.section}>
       {navBarMenu.map((elem) => (
         <Button
           value={elem}
           key={elem}
-          isActive={isActive}
-          onChange={(current) => onChange(elem)}
+          isActive={activeContent === elem ? true : false}
+          onChange={onChangeContent}
         >
           {elem}
           {elem === "Корзина" ? (
@@ -29,7 +30,7 @@ export default function NavBar({ isActive, onChange, cartSizeCount }) {
                 marginLeft: "0.3rem",
               }}
             >
-              {cartSizeCount}
+              {0}
             </button>
           ) : null}
         </Button>

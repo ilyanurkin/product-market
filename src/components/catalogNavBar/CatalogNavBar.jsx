@@ -2,12 +2,17 @@ import classes from "./CatalogNavBar.module.css";
 import { categoriesList } from "../../localData/categoriesArray";
 import Category from "./Categories/Category";
 import React from "react";
-export default function CatalogNavBar({
-  value,
-  handleInput,
-  handleCategory,
-  curCategory,
-}) {
+import { useDispatch } from "react-redux";
+import { searchByName, shawAll } from "../../store/productsSlice";
+export default function CatalogNavBar() {
+  const dispatch = useDispatch();
+  const handleInput = (inputValue) => {
+    if (inputValue === "") {
+      dispatch(shawAll());
+    } else {
+      dispatch(searchByName(inputValue));
+    }
+  };
   return (
     <div className={classes.CatalogNavBar}>
       <p
@@ -22,17 +27,12 @@ export default function CatalogNavBar({
       </p>
       <input
         type="text"
-        value={value}
         onChange={(event) => handleInput(event.target.value)}
         placeholder="Начните вводить название продукта"
       />
       <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
         {categoriesList.map((elem) => (
-          <Category
-            category={elem}
-            checked={curCategory === elem}
-            onClick={(value) => handleCategory(value)}
-          />
+          <Category category={elem} key={elem} />
         ))}
       </div>
     </div>

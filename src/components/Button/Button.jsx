@@ -3,7 +3,7 @@ export default function Button({ children, value, isActive, onChange }) {
     <button
       onClick={() => onChange(value)}
       style={
-        isActive === value
+        isActive
           ? {
               backgroundColor: "#0a7272",
               color: "white",

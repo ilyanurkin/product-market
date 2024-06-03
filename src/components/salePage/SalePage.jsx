@@ -1,8 +1,13 @@
 import Card from "../Card/Card";
-function SalePage({ arrSearchedByName, handleAddToCartClick }) {
+import { useSelector } from "react-redux";
+function SalePage() {
+  const products = useSelector((state) => state.products.products);
+  const handleAddToCartClick = () => {
+    console.log("добавлено в корзину");
+  };
   return (
     <div className="catalog-div">
-      {arrSearchedByName
+      {products
         .filter((product) => product.discount !== 0)
         .map((product) => (
           <Card
