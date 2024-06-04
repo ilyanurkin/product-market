@@ -11,7 +11,7 @@ function SalePage() {
         .filter((product) => product.discount !== 0)
         .map((product) => (
           <Card
-            {...product}
+            product={product}
             handleAddToCartClick={handleAddToCartClick}
             inFavorite={false}
           />
