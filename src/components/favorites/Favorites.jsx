@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 
 export default function Favorites() {
   const favorites = useSelector((state) => state.favorites.favorites);
-
   return (
     <div>
       {favorites.length !== 0 ? (

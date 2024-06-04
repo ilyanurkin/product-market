@@ -3,10 +3,11 @@ import classes from "./Card.module.css";
 import cartLogo from "../../../public/images/cart-icon.png";
 import inFavoriteIcon from "../../../public/images/inFavorites.svg";
 import notInFavoriteIcon from "../../../public/images/!inFavorite.svg";
-import { useDispatch } from "react-redux";
-import { toggleFavorites, existChecker } from "../../store/favoritesSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleFavorites } from "../../store/favoritesSlice";
 function Card({ product }) {
   const { name, imgsrc, category, price, measurement, discount } = product;
+  const favorites = useSelector((state) => state.favorites.favorites);
   const dispatch = useDispatch();
   const onClickAddToCart = () => {
     console.log("added in cart");
@@ -15,9 +16,14 @@ function Card({ product }) {
   const onClickToFavoriteButton = () => {
     dispatch(toggleFavorites(product));
   };
+  const existChecker = (product) => {
+    const isExist = favorites.some((prod) => prod.name === product.name);
+    if (isExist) return true;
+    else return false;
+  };
   return (
     <div className={classes.card}>
-      {!dispatch(existChecker(product)) ? (
+      {existChecker(product) ? (
         <button
           style={{
             border: "none",

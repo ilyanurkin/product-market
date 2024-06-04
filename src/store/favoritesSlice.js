@@ -25,13 +25,6 @@ const favoritesSlice = createSlice({
         }
       }
     },
-
-    existChecker: (state, { payload: product }) => {
-      const exists = state.favorites.some((item) => item.id === product.id);
-      console.log(exists);
-      return state;
-    },
-
     loadFavorites: (state) => {
       const storedFavorites = localStorage.getItem("favorites");
       if (storedFavorites) {
