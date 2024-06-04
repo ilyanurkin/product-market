@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleCategory } from "../../../store/productsSlice";
 export default function Category({ category }) {
   const activeCategory = useSelector((state) => state.products.activeCategory);
-  console.log(activeCategory);
   const dispatch = useDispatch();
   return (
     <button

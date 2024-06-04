@@ -17,12 +17,7 @@ export default function Catalog() {
     >
       <div className="catalog-div">
         {products.map((product) => (
-          <Card
-            key={product.name}
-            {...product}
-            handleAddToCartClick={handleAddToCartClick}
-            inFavorite={false}
-          />
+          <Card key={product.name} product={product} />
         ))}
       </div>
       <CatalogNavBar />

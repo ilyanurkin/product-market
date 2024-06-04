@@ -3,55 +3,21 @@ import classes from "./Card.module.css";
 import cartLogo from "../../../public/images/cart-icon.png";
 import inFavoriteIcon from "../../../public/images/inFavorites.svg";
 import notInFavoriteIcon from "../../../public/images/!inFavorite.svg";
-function Card({
-  name,
-  imgsrc,
-  price,
-  measurement,
-  category,
-  handleAddToCartClick,
-  discount,
-  inFavorite,
-  counter,
-}) {
-  const [inFavoriteStyle, setInFavoriteStyle] = React.useState(
-    localStorage.getItem(name) === null ? notInFavoriteIcon : inFavoriteIcon
-  );
+import { useDispatch } from "react-redux";
+import { toggleFavorites, existChecker } from "../../store/favoritesSlice";
+function Card({ product }) {
+  const { name, imgsrc, category, price, measurement, discount } = product;
+  const dispatch = useDispatch();
   const onClickAddToCart = () => {
-    handleAddToCartClick(
-      name,
-      imgsrc,
-      price,
-      measurement,
-      category,
-      discount,
-      counter
-    );
+    console.log("added in cart");
   };
+
   const onClickToFavoriteButton = () => {
-    if (localStorage.getItem(name) === null) {
-      localStorage.setItem(
-        name,
-        JSON.stringify({
-          name,
-          imgsrc,
-          price,
-          measurement,
-          category,
-          handleAddToCartClick,
-          discount,
-          counter,
-        })
-      );
-      setInFavoriteStyle(inFavoriteIcon);
-    } else {
-      localStorage.removeItem(name);
-      setInFavoriteStyle(notInFavoriteIcon);
-    }
+    dispatch(toggleFavorites(product));
   };
   return (
     <div className={classes.card}>
-      {!inFavorite ? (
+      {!dispatch(existChecker(product)) ? (
         <button
           style={{
             border: "none",
@@ -64,9 +30,24 @@ function Card({
             onClickToFavoriteButton();
           }}
         >
-          <img src={inFavoriteStyle} alt="" />
+          <img src={inFavoriteIcon} alt="" />
         </button>
-      ) : null}
+      ) : (
+        <button
+          style={{
+            border: "none",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "0",
+          }}
+          onClick={() => {
+            onClickToFavoriteButton();
+          }}
+        >
+          <img src={notInFavoriteIcon} alt="" />
+        </button>
+      )}
       <img
         src={imgsrc}
         alt="picture"
