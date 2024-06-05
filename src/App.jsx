@@ -2,20 +2,21 @@ import "./App.css";
 import Header from "../src/components/Header/Header";
 import NavBar from "../src/components/NavBar/NavBar";
 import Intro from "./components/Intro/Intro";
-import Card from "./components/Card/Card";
-import CatalogNavBar from "./components/catalogNavBar/catalogNavBar";
-import { productList } from "./localData/productList";
-import { useEffect, useState } from "react";
 import SalePage from "./components/salePage/SalePage";
-import Cart from "./components/Cart/Cart";
 import Catalog from "./components/Catalog/Catalog";
-import { useDispatch } from "react-redux";
-import { loadFavorites } from "./store/favoritesSlice";
+import Cart from "./components/Cart/Cart";
 import Favorites from "./components/favorites/Favorites";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { loadCart } from "./store/cartSlice";
+import { loadFavorites } from "./store/favoritesSlice";
+
 function App() {
   const dispatch = useDispatch();
+  console.log(loadFavorites);
   useEffect(() => {
     dispatch(loadFavorites());
+    dispatch(loadCart());
   }, []);
 
   const [activeContent, setActiveContent] = useState("О Компании");
@@ -34,13 +35,7 @@ function App() {
         {activeContent === "Каталог" ? <Catalog /> : null}
         {activeContent === "Акции" ? <SalePage /> : null}
         {activeContent === "Избранное" ? <Favorites /> : null}
-        {/*{activeContent === "Корзина" ? (
-          <Cart
-            productsInCart={productsInCart}
-            setProductsInCart={setProductsInCart}
-          />
-        ) : null}
-        */}
+        {activeContent === "Корзина" ? <Cart /> : null}
       </div>
     </div>
   );

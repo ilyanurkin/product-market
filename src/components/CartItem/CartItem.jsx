@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import classes from "./CartItem.module.css";
-export default function CartItem({
-  name,
-  imgsrc,
-  price,
-  measurement,
-  category,
-  handleDeleteButton,
-  discount,
-  handleCounter,
-}) {
-  const [counter, setCounter] = useState(1);
-  useEffect(() => handleCounter(name, counter), [counter]);
+import { useDispatch } from "react-redux";
+import {
+  incrementProductCounter,
+  decrementProductCounter,
+  removeFromCart,
+} from "../../store/cartSlice";
+export default function CartItem({ product }) {
+  const dispatch = useDispatch();
+
+  const { name, imgsrc, price, measurement, category, discount, counter } =
+    product;
   return (
     <div className={classes.CartItem}>
       <img src={imgsrc} alt="" />
@@ -63,10 +62,7 @@ export default function CartItem({
             fontSize: "1rem",
           }}
           onClick={() => {
-            setCounter((prev) => prev - 1);
-            if (counter === 1) {
-              setCounter(1);
-            }
+            dispatch(decrementProductCounter(product));
           }}
         >
           {"—"}
@@ -85,7 +81,7 @@ export default function CartItem({
             fontSize: "1.3rem",
           }}
           onClick={() => {
-            setCounter((prev) => prev + 1);
+            dispatch(incrementProductCounter(product));
           }}
         >
           {"+"}
@@ -102,7 +98,7 @@ export default function CartItem({
             borderRadius: "3rem",
             backgroundColor: "red",
           }}
-          onClick={() => handleDeleteButton(name)}
+          onClick={() => dispatch(removeFromCart(product))}
         >
           <p style={{ color: "white", fontSize: "1.1rem" }}>x</p>
         </button>

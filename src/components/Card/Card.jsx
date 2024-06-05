@@ -5,12 +5,14 @@ import inFavoriteIcon from "../../../public/images/inFavorites.svg";
 import notInFavoriteIcon from "../../../public/images/!inFavorite.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleFavorites } from "../../store/favoritesSlice";
+import { addToCart } from "../../store/cartSlice";
 function Card({ product }) {
   const { name, imgsrc, category, price, measurement, discount } = product;
   const favorites = useSelector((state) => state.favorites.favorites);
+
   const dispatch = useDispatch();
   const onClickAddToCart = () => {
-    console.log("added in cart");
+    dispatch(addToCart(product));
   };
 
   const onClickToFavoriteButton = () => {

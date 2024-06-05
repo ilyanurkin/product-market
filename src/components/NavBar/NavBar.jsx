@@ -5,6 +5,8 @@ import { navBarMenu } from "../../localData/navBarElements";
 import { useSelector } from "react-redux";
 export default function NavBar({ activeContent, onChangeContent }) {
   const favorites = useSelector((state) => state.favorites.favorites);
+  const productsInCart = useSelector((state) => state.cart.productsInCart);
+  const cartCount = productsInCart.length;
   const favoritesCount = favorites.length;
   return (
     <section className={classes.section}>
@@ -33,7 +35,7 @@ export default function NavBar({ activeContent, onChangeContent }) {
                 marginLeft: "0.3rem",
               }}
             >
-              {0}
+              {cartCount}
             </button>
           ) : null}
           {elem === "Избранное" ? (

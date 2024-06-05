@@ -1,52 +1,27 @@
-import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import CartItem from "../CartItem/CartItem";
-function Cart({ productsInCart, setProductsInCart }) {
-  const [cartSum, setCartSum] = useState(0);
-  function handleDeleteButton(name) {
-    let removedIndex = productsInCart.findIndex(
-      (product) => product.name === name
-    );
-    setProductsInCart((prevState) => [
-      ...prevState.slice(0, removedIndex),
-      ...prevState.slice(removedIndex + 1),
-    ]);
-    console.log(productsInCart);
-  }
-  const updateCounter = (name, counter) => {
-    let changedArray = productsInCart.map((product) =>
-      product.name === name ? { ...product, counter: counter } : product
-    );
-    setProductsInCart(changedArray);
-  };
-  const calcCartSum = (arr) => {
-    return arr.reduce(
-      (acc, currElem) =>
-        (acc +=
-          ((currElem.price * (100 - currElem.discount)) / 100) *
-          currElem.counter),
-      0
-    );
-  };
+
+import {
+  saveOrder,
+  loadLastOrder,
+  clearCart,
+  getCartSum,
+} from "../../store/cartSlice";
+import { useEffect } from "react";
+function Cart() {
+  const dispatch = useDispatch();
+  let cartSum = useSelector((state) => state.cart.cartSum);
+  const productsInCart = useSelector((state) => state.cart.productsInCart);
   useEffect(() => {
-    setCartSum(calcCartSum(productsInCart));
-    console.log(cartSum);
+    dispatch(getCartSum());
   }, [productsInCart]);
-  const handleClearCartButton = () => {
-    setProductsInCart([]);
-  };
   return (
     <div className="cart-div">
-      {productsInCart.length === 0
-        ? null
-        : productsInCart.map((item) => (
-            <CartItem
-              {...item}
-              key={item.name}
-              itemID={Math.random()}
-              handleDeleteButton={handleDeleteButton}
-              handleCounter={updateCounter}
-            />
-          ))}
+      {productsInCart.length !== 0
+        ? productsInCart.map((item) => (
+            <CartItem product={item} key={item.name} />
+          ))
+        : null}
       <span style={{ marginTop: "auto", color: "#0a7272" }}>
         {productsInCart.length === 0
           ? "Ваша корзина пуста "
@@ -63,21 +38,27 @@ function Cart({ productsInCart, setProductsInCart }) {
           margin: "1rem",
         }}
       >
-        <button onClick={handleClearCartButton} style={{ margin: "1rem" }}>
+        <button
+          onClick={() => dispatch(clearCart())}
+          style={{ margin: "1rem" }}
+        >
           Очистить корзину
         </button>
         <button
           onClick={() => {
-            if (productsInCart.length !== 0) {
-              alert("Заказ успешно оформлен!!!");
-              setProductsInCart([]);
-            } else {
-              alert("Добавьте товары в корзину, чтобы оформить заказ");
-            }
+            dispatch(loadLastOrder());
           }}
           style={{ margin: "1rem" }}
         >
-          Оформить заказ
+          Загрузить последний заказ
+        </button>
+        <button
+          onClick={() => {
+            dispatch(saveOrder());
+          }}
+          style={{ margin: "1rem" }}
+        >
+          Сохранить заказ
         </button>
       </div>
     </div>
