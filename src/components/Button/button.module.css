@@ -1,0 +1,35 @@
+.button {
+  background-color: white;
+  border: 2px solid #0a7272;
+  padding: 1rem;
+  width: 130px;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 15px;
+  font-size: 0.7rem;
+  font-family: Ubuntu;
+  font-weight: 600;
+}
+
+.buttonActive {
+  background-color: #0a7272;
+  border: none;
+  color: white;
+  padding: 1rem;
+  width: 130px;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 15px;
+  font-size: 0.7rem;
+  font-family: Ubuntu;
+  font-weight: 600;
+}
+.buttonActive:hover {
+  color: white;
+}

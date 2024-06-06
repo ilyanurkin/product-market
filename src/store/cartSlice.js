@@ -51,6 +51,7 @@ const cartSlice = createSlice({
         if (loadedOrder.length !== 0) {
           state.lastOrder = JSON.parse(loadedOrder);
           state.productsInCart = state.lastOrder;
+          localStorage.setItem("cart", JSON.stringify(state.productsInCart));
         } else {
           alert("Нет сохраненных заказов");
           state.lastOrder = [];

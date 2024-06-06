@@ -56,8 +56,10 @@ export default function About() {
           <img src={care} alt="" style={sliderImgParams} />
         </Slide>
       </Slider>
-      <ButtonBack>Back</ButtonBack>
-      <ButtonNext>Next</ButtonNext>
+      <div className="button-div">
+        <ButtonBack>Back</ButtonBack>
+        <ButtonNext>Next</ButtonNext>
+      </div>
     </CarouselProvider>
   );
 }

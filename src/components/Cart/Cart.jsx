@@ -7,14 +7,20 @@ import {
   clearCart,
   getCartSum,
 } from "../../store/cartSlice";
+
 import { useEffect } from "react";
+
 function Cart() {
   const dispatch = useDispatch();
+
   let cartSum = useSelector((state) => state.cart.cartSum);
+
   const productsInCart = useSelector((state) => state.cart.productsInCart);
+
   useEffect(() => {
     dispatch(getCartSum());
   }, [productsInCart]);
+
   return (
     <div className="cart-div">
       {productsInCart.length !== 0
@@ -39,12 +45,14 @@ function Cart() {
         }}
       >
         <button
+          className="button"
           onClick={() => dispatch(clearCart())}
           style={{ margin: "1rem" }}
         >
           Очистить корзину
         </button>
         <button
+          className="button"
           onClick={() => {
             dispatch(loadLastOrder());
           }}
@@ -53,6 +61,7 @@ function Cart() {
           Загрузить последний заказ
         </button>
         <button
+          className="button"
           onClick={() => {
             dispatch(saveOrder());
           }}

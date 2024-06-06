@@ -4,9 +4,7 @@ import CatalogNavBar from "../catalogNavBar/catalogNavBar";
 import { useSelector } from "react-redux";
 export default function Catalog() {
   const products = useSelector((state) => state.products.products);
-  const handleAddToCartClick = () => {
-    console.log("Добавлено в корзину");
-  };
+
   return (
     <div
       style={{

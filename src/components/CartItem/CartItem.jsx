@@ -22,22 +22,8 @@ export default function CartItem({ product }) {
         </p>
       </p>
 
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          marginLeft: "auto",
-          marginRight: "1rem",
-        }}
-      >
-        <p
-          style={{
-            marginRight: "1rem",
-            fontSize: "1.4rem",
-            fontWeight: "700",
-            color: "orange",
-          }}
-        >
+      <div className={classes.infoDiv}>
+        <p id={classes.price}>
           {discount === 0 ? (
             price * counter
           ) : (
@@ -50,36 +36,16 @@ export default function CartItem({ product }) {
           )}
         </p>
         <button
-          style={{
-            width: "1rem",
-            height: "1rem",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            borderRadius: "2rem",
-            backgroundColor: "#0a7272",
-            color: "white",
-            fontSize: "1rem",
-          }}
+          className={classes.CartItemButton}
           onClick={() => {
             dispatch(decrementProductCounter(product));
           }}
         >
-          {"—"}
+          {"-"}
         </button>
         <p style={{ width: "2rem", textAlign: "center" }}>{counter}</p>
         <button
-          style={{
-            width: "1rem",
-            height: "1rem",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            borderRadius: "2rem",
-            backgroundColor: "#0a7272",
-            color: "white",
-            fontSize: "1.3rem",
-          }}
+          className={classes.CartItemButton}
           onClick={() => {
             dispatch(incrementProductCounter(product));
           }}
@@ -87,17 +53,7 @@ export default function CartItem({ product }) {
           {"+"}
         </button>
         <button
-          style={{
-            marginLeft: "1rem",
-            width: "2rem",
-            height: "2rem",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            border: "none",
-            borderRadius: "3rem",
-            backgroundColor: "red",
-          }}
+          className={classes.delete}
           onClick={() => dispatch(removeFromCart(product))}
         >
           <p style={{ color: "white", fontSize: "1.1rem" }}>x</p>

@@ -19,44 +19,10 @@ export default function NavBar({ activeContent, onChangeContent }) {
         >
           {elem}
           {elem === "Корзина" ? (
-            <button
-              style={{
-                height: "0.1rem",
-                width: "0.1rem",
-                fontSize: "0.5rem",
-                padding: "0.5rem",
-                boxSizing: "border-box",
-                display: "flex",
-                color: "white",
-                backgroundColor: "orange",
-                border: "none",
-                alignItems: "center",
-                justifyContent: "center",
-                marginLeft: "0.3rem",
-              }}
-            >
-              {cartCount}
-            </button>
+            <button className={classes.button}>{cartCount}</button>
           ) : null}
           {elem === "Избранное" ? (
-            <button
-              style={{
-                height: "0.1rem",
-                width: "0.1rem",
-                fontSize: "0.5rem",
-                padding: "0.5rem",
-                boxSizing: "border-box",
-                display: "flex",
-                color: "white",
-                backgroundColor: "orange",
-                border: "none",
-                alignItems: "center",
-                justifyContent: "center",
-                marginLeft: "0.3rem",
-              }}
-            >
-              {favoritesCount}
-            </button>
+            <button className={classes.button}>{favoritesCount}</button>
           ) : null}
         </Button>
       ))}

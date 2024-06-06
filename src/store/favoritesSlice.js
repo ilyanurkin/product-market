@@ -9,20 +9,17 @@ const favoritesSlice = createSlice({
   initialState,
   reducers: {
     toggleFavorites: (state, { payload: product }) => {
-      const storedFavorites = localStorage.getItem("favorites");
-      if (storedFavorites) {
-        const isExist = state.favorites.find(
-          (item) => item.name === product.name
+      const isExist = state.favorites.find(
+        (item) => item.name === product.name
+      );
+      if (isExist) {
+        state.favorites = state.favorites.filter(
+          (item) => item.name !== product.name
         );
-        if (isExist) {
-          state.favorites = state.favorites.filter(
-            (item) => item.name !== product.name
-          );
-          localStorage.setItem("favorites", JSON.stringify(state.favorites));
-        } else {
-          state.favorites.push(product);
-          localStorage.setItem("favorites", JSON.stringify(state.favorites));
-        }
+        localStorage.setItem("favorites", JSON.stringify(state.favorites));
+      } else {
+        state.favorites.push(product);
+        localStorage.setItem("favorites", JSON.stringify(state.favorites));
       }
     },
     loadFavorites: (state) => {

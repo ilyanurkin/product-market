@@ -11,6 +11,7 @@ function Card({ product }) {
   const favorites = useSelector((state) => state.favorites.favorites);
 
   const dispatch = useDispatch();
+
   const onClickAddToCart = () => {
     dispatch(addToCart(product));
   };
@@ -18,22 +19,18 @@ function Card({ product }) {
   const onClickToFavoriteButton = () => {
     dispatch(toggleFavorites(product));
   };
+
   const existChecker = (product) => {
     const isExist = favorites.some((prod) => prod.name === product.name);
     if (isExist) return true;
     else return false;
   };
+
   return (
     <div className={classes.card}>
       {existChecker(product) ? (
         <button
-          style={{
-            border: "none",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "0",
-          }}
+          id={classes.toFavorite}
           onClick={() => {
             onClickToFavoriteButton();
           }}
@@ -42,13 +39,7 @@ function Card({ product }) {
         </button>
       ) : (
         <button
-          style={{
-            border: "none",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "0",
-          }}
+          id={classes.toFavorite}
           onClick={() => {
             onClickToFavoriteButton();
           }}
@@ -56,77 +47,26 @@ function Card({ product }) {
           <img src={notInFavoriteIcon} alt="" />
         </button>
       )}
-      <img
-        src={imgsrc}
-        alt="picture"
-        className={classes.productLogo}
-        style={{ marginLeft: "auto", marginRight: "auto" }}
-      />
-      <p
-        style={{
-          fontSize: "0.6rem",
-          color: "gray",
-          paddingRight: "10px",
-          marginBottom: "auto",
-          marginTop: "1rem",
-          marginLeft: "auto",
-        }}
-      >
+      <img src={imgsrc} alt="picture" className={classes.productLogo} />
+      <p id={classes.price}>
         <p>
           Категория: {category} {price}Р/{measurement}
         </p>
       </p>
-      <p
-        style={{
-          marginBottom: "auto",
-          marginRight: "auto",
-          marginLeft: "1rem",
-          fontSize: "1.5rem",
-          fontWeight: "600",
-        }}
-      >
-        {name}
-      </p>
+      <p id={classes.name}>{name}</p>
       <div className={classes.cardFooter}>
-        <p
-          style={{
-            display: "block",
-            fontSize: "30px",
-            fontWeight: "600",
-          }}
-        >
+        <p id={classes.discountedPrice}>
           {discount === 0
             ? price
             : Math.round(price * ((100 - discount) / 100))}{" "}
           ₽
         </p>
         {discount !== 0 ? (
-          <p
-            style={{
-              color: "white",
-              backgroundColor: "red",
-              padding: "0.4rem",
-              fontSize: "0.7rem",
-              borderRadius: "1rem",
-            }}
-          >
-            {" "}
-            Скидка {discount} %
-          </p>
+          <p id={classes.discount}> Скидка {discount} %</p>
         ) : null}
 
-        <button
-          style={{
-            width: "3rem",
-            height: "3rem",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            border: "none",
-          }}
-          onClick={onClickAddToCart}
-        >
-          <img src={cartLogo} style={{ width: "3rem", height: "3rem" }} />
+        <button className={classes.toCartButton} onClick={onClickAddToCart}>
+          <img className={classes.cartLogo} src={cartLogo} />
         </button>
       </div>
     </div>

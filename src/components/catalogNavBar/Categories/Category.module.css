@@ -3,10 +3,11 @@
   height: 2rem;
   margin: 1rem;
   display: flex;
+  font-family: Ubuntu;
   justify-content: center;
   align-items: center;
   border-radius: 2rem;
-  padding: 0.3rem;
+  padding: 1rem;
   color: #0a7272;
   border: none;
   -webkit-box-shadow: 0px 0px 15px -1px rgba(34, 92, 137, 0.29);

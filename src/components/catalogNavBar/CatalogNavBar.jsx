@@ -15,16 +15,7 @@ export default function CatalogNavBar() {
   };
   return (
     <div className={classes.CatalogNavBar}>
-      <p
-        style={{
-          color: "#0a7272",
-          fontSize: "1.3rem",
-          fontWeight: "400",
-          marginBottom: "1rem",
-        }}
-      >
-        Поиск по Каталогу:
-      </p>
+      <p id={classes.search}>Поиск по Каталогу:</p>
       <input
         type="text"
         onChange={(event) => handleInput(event.target.value)}

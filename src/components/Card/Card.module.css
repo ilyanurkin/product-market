@@ -1,11 +1,12 @@
 .card {
   border-radius: 20px;
-  width: 30%;
+  width: 320px;
   height: 30rem;
   margin-bottom: 2rem;
   margin-right: auto;
   margin-left: auto;
   margin-top: 1.2rem;
+  margin-left: 20px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -22,6 +23,8 @@
   height: 45%;
   margin-top: 2rem;
   border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .selectQuant {
   display: flex;
@@ -44,4 +47,54 @@
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   box-sizing: border-box;
+}
+#toFavorite {
+  margin-left: 10px;
+  margin-top: 10px;
+  border: none !important;
+  display: flex;
+  background-color: #fff;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+#price {
+  font-size: 0.6rem;
+  color: gray;
+  padding-right: 10px;
+  margin-bottom: auto;
+  margin-top: 1rem;
+  margin-left: auto;
+}
+#name {
+  margin-bottom: auto;
+  margin-right: auto;
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+#discountedPrice {
+  display: block;
+  font-size: 30px;
+  font-weight: 600;
+}
+#discount {
+  color: white;
+  background-color: red;
+  padding: 0.4rem;
+  font-size: 0.7rem;
+  border-radius: 1rem;
+}
+.toCartButton {
+  background-color: #fff;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+.cartLogo {
+  width: 3rem;
+  height: 3rem;
 }

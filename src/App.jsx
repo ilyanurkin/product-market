@@ -6,14 +6,16 @@ import SalePage from "./components/salePage/SalePage";
 import Catalog from "./components/Catalog/Catalog";
 import Cart from "./components/Cart/Cart";
 import Favorites from "./components/favorites/Favorites";
+
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+
 import { loadCart } from "./store/cartSlice";
 import { loadFavorites } from "./store/favoritesSlice";
 
 function App() {
   const dispatch = useDispatch();
-  console.log(loadFavorites);
+
   useEffect(() => {
     dispatch(loadFavorites());
     dispatch(loadCart());

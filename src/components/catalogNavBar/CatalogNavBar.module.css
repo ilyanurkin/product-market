@@ -27,7 +27,13 @@
 .CatalogNavBar input::placeholder {
   font-size: 0.6rem;
   color: #0a7272;
-  font-family: "Ubuntu", sans-serif;
+  font-family: Ubuntu;
   letter-spacing: 2px;
   padding-left: 10px;
+}
+#search {
+  color: #0a7272;
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
 }
